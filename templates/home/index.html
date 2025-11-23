@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}Welcome{% endblock %}
+
+
+{% block content %}
+<h1 class="display-4">Welcome to Our Game Studio</h1>
+<p class="lead">Explore our latest games, open positions, and what we're building next.</p>
+<hr>
+<div class="row mt-4">
+<div class="col-md-4">
+<h3>Games</h3>
+<p>Check out what we've shipped and what's in development.</p>
+<a class="btn btn-primary" href="/games/">View Games</a>
+</div>
+<div class="col-md-4">
+<h3>Careers</h3>
+<p>Join our team. Submit your resume and explore open roles.</p>
+<a class="btn btn-primary" href="/careers/">View Careers</a>
+</div>
+<div class="col-md-4">
+<h3>The Horizon</h3>
+<p>A sneak peek into what we're cooking next.</p>
+<a class="btn btn-primary" href="/the_horizon/">Explore</a>
+</div>
+</div>
+{% endblock %}
