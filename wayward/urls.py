@@ -28,6 +28,6 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('accounts/', include('accounts.urls')),
     path('careers/', include('careers.urls')),
-    path('games', include('games.urls')),
-    path('the-horizon/', include('the_horizon.urls')),
+    path('games/', include('games.urls')),
+    path('the_horizon/', include('the_horizon.urls')),
 ]
