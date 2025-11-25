@@ -1,94 +1,53 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Site{% endblock %}</title>
+{% extends "base.html" %}
+{% block title %}Home - Wayward Studios{% endblock %}
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{% block content %}
 
-    <!-- Your global stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body class="d-flex flex-column min-vh-100">
+<!-- HERO SECTION -->
+<section class="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+        <h1 class="text-5xl font-extrabold mb-4">
+            Crafting Worlds Worth Exploring
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Indie-driven, immersion-focused game development built with passion and precision.
+        </p>
 
-    <!-- Header / Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">MySite</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/careers/">Careers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/games/">Games</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/the_horizon/">The Horizon</a>
-                    </li>
-
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/profile/">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/logout/">Logout</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/login/">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accounts/register/">Register</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+        <div class="mt-8">
+            <a href="/games/"
+               class="px-6 py-3 text-lg font-semibold bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow">
+               Explore Our Games
+            </a>
         </div>
-    </nav>
-
-    <!-- Flash messages -->
-    <div class="container mt-3">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
     </div>
+</section>
 
-    <!-- Page Content -->
-    <main class="flex-grow-1">
-        <div class="container py-4">
-            {% block content %}
-            <!-- Child templates inject their page content here -->
-            {% endblock %}
+<!-- FEATURE GRID -->
+<section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 shadow">
+            <h2 class="text-xl font-semibold mb-2">What We Make</h2>
+            <p class="text-gray-400">
+                Immersive worlds, deep lore, and handcrafted experiences.
+            </p>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-3 mt-auto">
-        <div class="container text-center">
-            <p class="mb-0">&copy; {{ now|date:"Y" }} MySite — All rights reserved.</p>
+        <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 shadow">
+            <h2 class="text-xl font-semibold mb-2">Join the Team</h2>
+            <p class="text-gray-400">
+                Looking for developers, artists, and storytellers.
+            </p>
         </div>
-    </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 shadow">
+            <h2 class="text-xl font-semibold mb-2">Behind the Scenes</h2>
+            <p class="text-gray-400">
+                See what we’re building next in The Horizon.
+            </p>
+        </div>
 
-    {% block scripts %}{% endblock %}
-</body>
-</html>
+    </div>
+</section>
+
+{% endblock %}
