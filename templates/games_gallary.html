@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Project Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-6 flex justify-center">
+    <div class="w-full max-w-6xl">
+      <h1 class="text-3xl font-bold mb-6 text-gray-800">
+        Project Media Gallery
+      </h1>
+
+      <!-- Project Container -->
+      <div id="projects" class="space-y-10">
+        <!-- Example Project -->
+        <div class="bg-white p-6 rounded-2xl shadow">
+          <h2 class="text-2xl font-semibold mb-4">Project Alpha</h2>
+
+          <!-- Horizontal Media Scroller -->
+          <div class="flex gap-4 overflow-x-auto pb-4">
+            <!-- Image Item -->
+            <div class="bg-gray-400 rounded-xl flex-shrink-0 w-60 h-40 relative group cursor-pointer">
+              <img
+                src="thumb1.jpg"
+                class="w-full h-full object-cover rounded-xl shadow"
+              />
+              <button
+                onclick="openLightbox('image1.jpg', 'image')"
+                class="absolute inset-0"
+              ></button>
+            </div>
+
+            <!-- Video Item -->
+            <div class="bg-gray-400 rounded-xl flex-shrink-0 w-60 h-40 relative group cursor-pointer">
+              <video class="w-full h-full object-cover rounded-xl shadow" muted>
+                <source src="clip1.mp4" type="video/mp4" />
+              </video>
+              <button
+                onclick="openLightbox('clip1.mp4', 'video')"
+                class="absolute inset-0"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate this block for future projects -->
+        <div class="bg-white p-6 rounded-2xl shadow">
+          <h2 class="text-2xl font-semibold mb-4">Project Beta</h2>
+
+          <div class="flex gap-4 overflow-x-auto pb-4">
+            <div class="flex-shrink-0 w-60 h-40 relative group cursor-pointer">
+              <img
+                src="thumb2.jpg"
+                class="w-full h-full object-cover rounded-xl shadow"
+              />
+              <button
+                onclick="openLightbox('image2.jpg', 'image')"
+                class="absolute inset-0"
+              ></button>
+            </div>
+
+            <div class="flex-shrink-0 w-60 h-40 relative group cursor-pointer">
+              <video class="w-full h-full object-cover rounded-xl shadow" muted>
+                <source src="clip2.mp4" type="video/mp4" />
+              </video>
+              <button
+                onclick="openLightbox('clip2.mp4', 'video')"
+                class="absolute inset-0"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div
+        id="lightbox"
+        class="hidden fixed inset-0 bg-black bg-opacity-80 items-center justify-center p-4 z-50"
+      >
+        <button
+          onclick="closeLightbox()"
+          class="absolute top-4 right-4 text-white text-3xl"
+        >
+          &times;
+        </button>
+        <img id="lightboxImg" class="max-h-full max-w-full rounded-lg hidden" />
+        <video
+          id="lightboxVideo"
+          class="max-h-full max-w-full rounded-lg hidden"
+          controls
+        ></video>
+      </div>
+
+      <script>
+        function openLightbox(src, type) {
+          const lb = document.getElementById("lightbox");
+          const img = document.getElementById("lightboxImg");
+          const vid = document.getElementById("lightboxVideo");
+
+          img.classList.add("hidden");
+          vid.classList.add("hidden");
+          vid.pause();
+
+          if (type === "image") {
+            img.src = src;
+            img.classList.remove("hidden");
+          } else {
+            vid.src = src;
+            vid.classList.remove("hidden");
+            vid.play();
+          }
+
+          lb.classList.remove("hidden");
+        }
+
+        function closeLightbox() {
+          const lb = document.getElementById("lightbox");
+          const img = document.getElementById("lightboxImg");
+          const vid = document.getElementById("lightboxVideo");
+
+          lb.classList.add("hidden");
+          vid.pause();
+        }
+      </script>
+    </div>
+  </body>
+</html>
+
+<!-- Use Javascript conditionals in rendering, this is raw and base uses no framework and so will work wherever javascript works -->
+ <!-- demo react conditional rendering with other files to demo two of many possible scenarios depending on the tech stack. -->
