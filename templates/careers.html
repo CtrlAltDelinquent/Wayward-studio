@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Careers{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-8">
+
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Page Title -->
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Careers</h1>
+
+    <!-- Search Box -->
+    <input 
+      id="searchInput"
+      type="text" 
+      placeholder="Search careers..."
+      class="w-full mb-6 p-3 border border-gray-300 rounded-xl shadow-sm focus:ring focus:ring-blue-300"
+    />
+
+    <!-- Careers List -->
+    <div id="careerList" class="space-y-4"></div>
+
+  </div>
+
+  <script>
+    // Example list of careers (could be loaded from JSON later)
+    const careers = [
+      { name: "Software Engineer", description: "Builds and maintains software applications." },
+      { name: "Network Administrator", description: "Manages network systems and infrastructure." },
+      { name: "Cybersecurity Analyst", description: "Protects systems and networks from vulnerabilities." },
+      { name: "Data Scientist", description: "Analyzes data and builds models for insights." },
+      { name: "IT Support Specialist", description: "Helps users solve technical problems." },
+      { name: "Cloud Architect", description: "Designs cloud infrastructure and solutions." },
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const careerList = document.getElementById("careerList");
+
+    // Render initial list
+    function renderCareers(list) {
+      careerList.innerHTML = "";
+
+      list.forEach(career => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded-xl shadow";
+
+        card.innerHTML = `
+          <h2 class="text-xl font-semibold text-gray-900">${career.name}</h2>
+          <p class="text-gray-600 text-sm">${career.description}</p>
+        `;
+
+        careerList.appendChild(card);
+      });
+    }
+
+    // Filter as user types
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+
+      const filtered = careers.filter(career =>
+        career.name.toLowerCase().includes(query)
+      );
+
+      renderCareers(filtered);
+    });
+
+    renderCareers(careers);
+  </script>
+
+</body>
+</html>
+
+{% endblock %}
